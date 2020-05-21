@@ -5,7 +5,11 @@ const jwt = require("jsonwebtoken")
 const task = require("./task")
 
 const userSchema = new mongoose.Schema({
-    name:{
+    first_name:{
+        type: String,
+        required: true
+    },
+    last_name:{
         type: String,
         required: true
     },
@@ -22,6 +26,7 @@ const userSchema = new mongoose.Schema({
         required: true,
         minlength: 7   
     },
+    
     email:{
         type: String,
         require: true,
@@ -32,6 +37,114 @@ const userSchema = new mongoose.Schema({
             }
         }
     },
+// Basic info
+    height :{
+        type: String
+    },
+    weight:{
+        type: String
+    },
+    language:{
+        type: String
+    },
+    body_type :{
+        type: String
+    },
+    complexion:{
+        type: String
+    },
+    marital_status:{
+        type:String
+    },
+// RELIGION  
+    religion:{
+        type: String
+    },
+    caste:{
+        type: String
+    },
+    gothram:{
+        type: String
+    },
+    rashi:{
+        type: String
+    },
+    mother_tounge:{
+        type: String
+    },
+// Life Style
+    eating_habit:{
+            type: String
+        },
+    drinking_habit:{
+        type: String
+    },
+    smoking_habit:{
+        type: String
+    },
+
+// Work Details  
+    occupation:{
+        type: String
+    },
+    company :{
+        type: String
+    },
+    salary:{
+        type: String
+    },
+    education:{
+        type: String
+    },
+    education_details:{
+        type: String
+    },
+// Family Details
+    family_type:{
+        type: String
+    },
+    fathers_status:{
+        type: String
+    },
+    mothers_status:{
+        type: String
+    },
+    relatives_status:{
+        type: String
+    },
+    brothers:{
+        type: Number
+    },
+    sisters:{
+        type: String
+    },
+    native_place:{
+        type: String
+    },
+// LOCATION  
+    country:{
+        type: String
+    },
+    city:{
+        type: String
+    },
+    state:{
+        type: String
+    },
+    citizenship:{
+        type: String
+    },
+    residential_status:{
+        type: String
+    },
+//CONTACT INFO
+    contact_number:{
+        type: String
+    },
+    parents_contact:{
+        type: String
+    },
+// Other
     tokens:[{
         token:{
             type: String,

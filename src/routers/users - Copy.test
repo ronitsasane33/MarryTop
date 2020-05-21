@@ -1,0 +1,217 @@
+const   express = require("express"),
+        router = new express.Router(),
+        user = require("../Models/user"),
+        jwt = require("jsonwebtoken"),
+        auth = require("../Middleware/authorization"),
+        multer = require('multer'),
+        sharp = require('sharp'),
+        path = require("path")
+        
+router.use(express.json())
+
+// router.get('/', (req, res)=>{
+//     res.render('SignUp')
+// })
+
+router.get('/up', (req, res)=>{
+    res.render('upload')
+})
+
+router.get('/updateUser',auth,(req,res)=>{
+    const userCurrent = req.userCurrent
+    res.render('DetailForm',{userCurrent})
+})
+
+//UPLOAD AVATAR PRE work---------------------------------------------AVATAR-------------------------
+const upload = multer({
+    limits:{
+        fileSize: 1000000
+    },
+    fileFilter(req, file, callBack){
+        if(!file.originalname.match(/\.(png|jpg)$/)){
+            return callBack(new Error("please upload image"))
+        }
+        callBack(undefined, true)
+    }
+})
+
+//========================================================= || USER ||==========================
+
+
+//CREATE NEW USER
+router.post("/user",  upload.single('avatar'), async(req, res)=>{
+    const user1 = new user(req.body)  
+    try{
+        const userCurrent = await user1.save()
+        const token = await userCurrent.createToken()
+        const bufferSharp = await sharp(req.file.buffer).png().toBuffer()
+        userCurrent.avatar = bufferSharp
+        res.cookie('auth_token', token)
+        //res.sendFile(path.resolve(__dirname, '../../Templates', 'views', 'private.html'))
+        await userCurrent.save()
+
+        // const allUsers = await user.find()
+        res.render("DetailForm", {userCurrent})
+       //res.render("profile",{userCurrent,token})
+    }catch(e){
+        res.status(500).send(e)
+    }
+})
+
+
+//Update User
+router.patch("/user/:id", auth, async(req,res)=>{
+    const updationVal = Object.keys(req.body)
+    const notAllowed = ["id"]
+    const isValidOpr = updationVal.every((value)=> notAllowed.includes(value))
+    
+    if(isValidOpr){
+        return res.status(400).send({error:"Invalid Updates"})
+    }
+    try{
+        
+        updationVal.forEach(function(updates){
+            if (req.body[updates]){
+                req.userCurrent[updates] = req.body[updates]
+            }
+        });
+
+        await req.userCurrent.save()
+        const userCurrent = req.userCurrent
+        // res.send(req.userCurrent)
+        res.render("myProfile",{userCurrent})
+    }catch(e){
+        res.status(500).send(e)
+        console.log(e)
+    }
+})
+
+
+//LOG IN
+router.post("/user/login", async(req,res)=>{
+    try{
+        const userCurrent = await user.loginUser(req.body.email,req.body.password)
+        const token = await userCurrent.createToken()
+
+        res.cookie('auth_token', token)
+        const allUsers = await user.find()
+        res.render("allUsers", {allUsers, token, userCurrent})
+        
+    }catch(e){
+        
+        res.status(500).send(e)
+        console.log(e)
+    }
+
+})
+
+//Get all Users
+router.get("/users", auth, async(req, res)=>{
+    try{    
+        //*** res.send({user1 : user1.toJSON(), token})   IS SAME AS BELOW bcoz of toJSON method
+        const userCurrent = req.userCurrent
+        const allUsers = await user.find()
+        res.render("allUsers", {allUsers, userCurrent})
+    }catch(e){
+        res.status(500).send(e)
+    }
+} )
+
+// DEV : GET BY ID
+router.get("/users/:id", auth, async(req,res)=>{
+    try{
+        const userCurrent = req.userCurrent
+        const userVisit = await user.findById(req.params.id)
+        if(!userVisit){
+            return res.status(404).send()
+        }
+        res.render("profile", {userVisit, userCurrent})
+    }catch(e){
+        res.status(500).send()
+    }
+})
+
+//==================================================================OTHERS============================
+
+//GET MY PROFILE
+router.get("/user/me", auth, async(req,res)=> {
+    const userCurrent = req.userCurrent
+    res.render("myProfile",{userCurrent})
+})
+
+
+//LOG OUT
+router.get("/user/logout", auth, async(req,res)=>{
+    try{
+        req.userCurrent.tokens = req.userCurrent.tokens.filter((token)=>{
+            return token.token !== req.token
+            
+        })
+        await req.userCurrent.save()
+        res.render("SignUp")
+
+    }catch(e){
+        res.status(500).send(e)
+    }
+    
+})
+
+//LOG OUT ALL
+router.post("/user/logoutfromall", auth, async (req, res)=>{
+    try{
+        req.userCurrent.tokens = []
+        await req.userCurrent.save()
+        res.send()
+    }catch(e){
+        res.status(500).send()
+    }
+})
+
+
+
+//==================================================AVATAR====================================
+
+//ROUTE UPLOAD AVATAR
+router.post("/user/me/avatar", auth, upload.single('up'), async(req, res)=>{
+    const bufferSharp = await sharp(req.file.buffer).png().toBuffer()
+    req.userCurrent.avatar = bufferSharp
+    await req.userCurrent.save()
+    res.send()
+},(error, req, res, next)=>{
+    res.status(400).send({error: error.message})
+})
+
+//ACCESS AVATAR
+router.get("/user/:id/avatar", async(req, res)=>{
+    try{
+        const userCurrent = await user.findById(req.params.id)
+        if(!userCurrent || !userCurrent.avatar){
+            throw new Error()
+        }
+
+        res.set('Content-Type', 'image/jpg')
+        res.send(userCurrent.avatar)
+
+    }catch(e){
+        console.log(e)
+        res.status(404).send()
+    }
+    
+})
+
+//DELETE AVATAR
+router.delete("/user/me/avatar", auth, async(req, res)=>{
+    try{
+        req.userCurrent.avatar = undefined
+        await req.userCurrent.save()
+        res.send()
+    }catch(e){
+        res.status(404).send()
+    }
+})
+
+
+
+//-------------------------------------------------------------------------------------AVATAR END-----------------------------
+
+module.exports = router

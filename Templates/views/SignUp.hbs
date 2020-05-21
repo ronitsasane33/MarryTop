@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+<link  href="/StyleSheets/SignUp.css" rel="stylesheet" type="text/css" >
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+<body>
+<div class="image-bak">
+<div class="container-fluid login-form">
+  <a class="navbar-brand" href="/"> <img src="/images/logo2.png" width="140ex"></a>
+  <div class="float-right">
+    <form class="form-inline" action="/user/login" method="POST">
+      <div class="form-group">
+        <input type="email" class="form-control" id="email" placeholder="Email" name="email">
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+      </div>
+      {{!-- <div class="checkbox">
+        <label><input type="checkbox" name="remember"> Remember me</label>
+      </div> --}}
+      <button class="margin-submit" type="submit">Submit</button>
+    </form>
+    </div>
+</div>
+
+
+<div class="container-fluid">
+  <form id="regForm" action="/user" method="post" enctype="multipart/form-data">
+    <h3> Don't have an account ?</h3>
+    <h1>Sign Up</h1>
+    <hr class="hr-main">
+        <!-- One "tab" for each step in the form: -->
+        <div class="tab form-group">
+          <p><input class="form-fields" placeholder="First name..." oninput="this.className = ''" name="first_name"></p>
+          <p><input class="form-fields" placeholder="Last name..." oninput="this.className = ''" name="last_name"></p>
+          <p><input class="form-fields" id="email-sign"type="email" placeholder="E-mail..." oninput="this.className = ''" name="email"></p>
+          {{!-- <p><input placeholder="Phone..." oninput="this.className = ''" name="phone"></p> --}}
+          <p><input class="form-fields" id="password-sign" placeholder="Password..." oninput="this.className = ''" name="password" type="password"></p>
+        </div>
+        <div class="tab form-group"><label>Birthday:</label>
+          <p><input class="form-fields" type="date" placeholder="yyyy" oninput="this.className = ''" name="date"></p>
+          <p><label>Religion:</label>
+            <select class="form-control" name="Religion" required>
+              <option value="">Select...</option>
+              <option value="Hindu">Hindu</option>
+              <option value="Buddhist">Buddhist</option>
+              <option value="Jain">Jain</option>
+              <option value="Muslim">Muslim</option>
+              <option value="Sikh">Sikh</option>
+              <option value="Christian">Christian</option>
+              <option value="Parsi">Parsi</option>
+              <option value="Jewish">Jewish</option>
+              <option value="No Religion">No Religion</option>
+              <option value="Spiritual">Spiritual</option>
+              <option value="Other">Other</option>
+            </select>
+          </p>
+          <p><input class="form-fields" placeholder="Marital Status" oninput="this.className = ''" name="marital_status"></p>
+          {{!-- <p><input class="form-fields" type="date" placeholder="yyyy" oninput="this.className = ''" name="date"></p> --}}
+          {{!-- <p><input class="form-fields" placeholder="dd" oninput="this.className = ''" name="dd"></p>
+          <p><input class="form-fields" placeholder="mm" oninput="this.className = ''" name="nn"></p>
+          <p><input class="form-fields" placeholder="yyyy" oninput="this.className = ''" name="yyyy"></p> --}}
+
+        </div>
+        <div class="tab form-group">Profile Picture:
+              <label for="validationCustom04">State</label>
+              <input type="file" name="avatar" class="form-control-file" id="exampleFormControlFile1" required>
+              <div class="invalid-feedback">
+                  Please provide a valid state.
+        </div>
+    </div>
+
+    <div style="overflow:auto;">
+      <div style="float:right;">
+        <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+        <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+      </div>
+    </div>
+    <!-- Circles which indicates the steps of the form: -->
+    <div style="text-align:center;margin-top:40px;">
+      <span class="step"></span>
+      <span class="step"></span>
+      <span class="step"></span>
+    </div>
+  </form>
+</div>
+</div>
+
+<script src="/js/SignUp.js"></script>
+</body>
+</html>

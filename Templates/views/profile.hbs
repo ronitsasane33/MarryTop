@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet"  href="/StyleSheets/profile.css" type="text/css" >
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    
+</head>
+<body data-spy="scroll" data-target="#myScrollspy" data-offset="1">
+
+{{>header}}      
+
+<div class="back-color">
+  <div class="container-fluid">
+    <div class="row">
+      <nav class="col-2 " id="myScrollspy">
+        <ul class="nav nav-pills flex-column menu-square">
+          <li class="nav-item center-align">
+            <img class="img-thumbnail img-responsive"  width="170ex" src="http://localhost:3000/user/{{userVisit._id}}/avatar" alt="no image" /> 
+            <h4> {{userVisit.first_name}} {{userVisit.last_name}}</h4>  
+            <hr class="hr-main">     
+          </li>
+          <li class="nav-item">
+            <a class="nav-link profile-nav-color active" href="#section1">Personal Details</a>
+            <hr class="hr-normal">
+          </li>
+          <li class="nav-item">
+            <a class="nav-link profile-nav-color" href="#section2">Photos</a>
+            <hr class="hr-normal">
+          </li>
+          <li class="nav-item">
+            <a class="nav-link profile-nav-color" href="#section3">Professional Info</a>
+            <hr class="hr-normal">
+          </li>
+          <li class="nav-item">
+            <a class="nav-link profile-nav-color" href="#section4">Religion & LifeStyle</a>
+            <hr class="hr-normal">
+          </li>
+          <li class="nav-item">
+            <a class="nav-link profile-nav-color" href="#section5">Family Details</a>
+            <hr class="hr-normal">
+          </li>
+           <li class="nav-item">
+            <a class="nav-link profile-nav-color" href="#section6">Locaiton</a>
+            <hr class="hr-normal">
+          </li>
+        </ul>
+      </nav>
+      <div class="col-7">
+        
+        <div id="section1" class="square"> 
+          <h4>Personal Details</h4>
+          <hr class="hr-main">
+            <div class="row">
+              <div class="col-6">
+                <p><span class="attribute">Age:</span> 24</p>
+                <p><span class="attribute">Occupation:</span> {{userVisit.occupation}}</p>
+                <p><span class="attribute">Works at:</span> {{userVisit.company}}</p>
+                <p><span class="attribute">Salary:</span> {{userVisit.salary}}</p>
+                <p><span class="attribute">Education:</span> {{userVisit.education}}</p>
+                <p><span class="attribute">Lives in:</span> {{userVisit.city}}</p>
+              </div>
+              <div class="col-6">
+                <p><span class="attribute">Marietal Status:</span> {{userVisit.marital_status}} </p>
+                <p><span class="attribute">Religion/caste:</span>{{userVisit.caste}} </p>
+                <p><span class="attribute">Height:</span> {{userVisit.height}}</p>
+                <p><span class="attribute">Weight:</span> {{userVisit.weight}}</p>
+                <p><span class="attribute">Language:</span> {{userVisit.language}}</p>
+                <p><span class="attribute">Body Type:</span> {{userVisit.body_type}}</p>
+              </div>
+            </div>
+                        
+        </div>   
+        <div id="section2" class="square-carousel">
+          <h4 class="h4-photos-margin"> Photos</h4> 
+              <div class="slideshow-container">
+                <div class="mySlides">
+                  <img class="img-slides" src="/images/img1.jpg" >
+                </div>
+
+                <div class="mySlides">
+                  <img class="img-slides" src="/images/dad.jpg" >
+                </div>
+
+                <div class="mySlides">
+                  <img class="img-slides" src="/images/img2.jpg" >
+                </div>
+
+                <div class="mySlides">
+                  <img class="img-slides" src="/images/img3.jpg" >
+                </div>
+
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                
+                <div style="text-align:center">
+                  <span class="dot" onclick="currentSlide(1)"></span> 
+                  <span class="dot" onclick="currentSlide(2)"></span> 
+                  <span class="dot" onclick="currentSlide(3)"></span> 
+                  <span class="dot" onclick="currentSlide(4)"></span>
+                </div>
+              </div>
+                                
+        </div>     
+        <div id="section3" class="square">         
+          <h4>Professional Info</h4>
+          <hr class="hr-main">
+            <div class="row">
+              <div class="col-6">
+                <p><span class="attribute">Occupation: </span>{{userVisit.occupation}}</p>
+                <p><span class="attribute">Works at: </span>{{userVisit.company}}</p>
+              </div>
+              <div class="col-6">
+                <p><span class="attribute">Education: </span>{{userVisit.education}}</p>
+                <p><span class="attribute">Education Details: </span>{{userVisit.education_details}}</p>
+              </div>
+            </div>
+        </div> 
+        <div id="section4" class="square">         
+          <h4>Religion & LifeStyle</h4>
+          <hr class="hr-main">
+            <div class="row">
+              <div class="col-6">
+                <p><span class="attribute">Religion: </span>{{userVisit.religion}}</p>
+                <p><span class="attribute">Caste/Subcaste: </span>{{userVisit.caste}} </p>
+                <p><span class="attribute">Gothram: </span> {{userVisit.gothram}} </p>
+                <p><span class="attribute">Rashi: </span> {{userVisit.rashi}} </p>
+              </div>
+              <div class="col-6">
+                <p><span class="attribute">Eating Habit: </span>{{userVisit.eating_habit}}</p>
+                <p><span class="attribute">Drinking Habit: </span> {{userVisit.drinking_habit}}</p>
+                <p><span class="attribute">Smoking Habit: </span>{{userVisit.smoking_habit}}</p>
+              </div>
+            </div>
+        </div>
+        <div id="section5" class="square">         
+          <h4>Family Details</h4>
+          <hr class="hr-main">
+            <div class="row">
+              <div class="col-6">
+                <p><span class="attribute">Family type: </span>{{userVisit.family_type}}</p>
+                <p><span class="attribute">Fathers status: </span>{{userVisit.family_status}}</p>
+                <p><span class="attribute">Mother status: </span>{{userVisit.mother_status}} </p>
+              </div>
+              <div class="col-6">
+                {{!-- add dynamic option here --}}
+                <p><span class="attribute">Extra member status: </span>{{userVisit.relative_status}} </p>
+                <p><span class="attribute">no of brother: </span>{{userVisit.brothers}}</p>
+                <p><span class="attribute">no of sister: </span>{{userVisit.sisters}}</p>
+              </div>
+            </div>
+        </div> 
+        <div id="section6" class="square">         
+          <h4>Location</h4>
+          <hr class="hr-main">
+            <div class="row">
+              <div class="col-6">
+                <p><span class="attribute">Citizenship: </span>{{userVisit.citizenship}}</p>
+                <p><span class="attribute">State: </span>{{userVisit.state}}</p>
+                <p><span class="attribute">City: </span>{{userVisit.city}} </p>
+              </div>
+              <div class="col-6">
+                {{!-- add dynamic option here --}}
+                <p><span class="attribute">Residing Country: </span>{{userVisit.country}} </p>
+                <p><span class="attribute">Residing States: </span>{{userVisit.state}}</p>
+                <p><span class="attribute">Residing City: </span>{{userVisit.city}}</p>
+              </div>
+            </div>
+        </div>     
+      </div>
+      <div class="col-3">
+              
+                <div class="row">
+                      <div class="col">
+                        <div class="contact-square">
+                        
+                          <h4>Contact Info</h4>
+                          <hr class="hr-main">
+                              <p><span class="attribute">Contact number: </span>+1 9732542537</p>
+                              <p><span class="attribute">Email: </span>sasaneshubham79@gmail.com</p>
+                              <p><span class="attribute">parents number: </span>9867111872</p>
+                           
+                        </div>
+                      </div>
+                </div>   
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+     var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active-carousel", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active-carousel";
+}
+   </script>
+</body>
+</html>

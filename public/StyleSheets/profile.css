@@ -1,0 +1,177 @@
+@charset "UTF-8";
+body {
+    position: relative;
+  }
+
+
+  div.col-8 div {
+    height: auto;
+  }
+  hr.profile-nav{
+    color: black;
+  }
+  .space{
+    margin-top: 10ex;
+  }
+  .square{
+    padding: 50px;
+    border: 0.1px solid grey;
+    border-radius: 10px;
+    margin: 30px;
+    background-color: white;
+    box-shadow:1px 1px 10px grey; 
+  }
+
+  .square-carousel{
+    padding-top: 13px;
+    border: 0.1px solid grey;
+    border-radius: 10px;
+    margin: 30px;
+    background-color: white;
+    box-shadow:1px 1px 10px grey; 
+  }
+
+  .back-color{
+    background-color: #E9EBEE;
+  }
+
+  /* name: SHIVA "name is attribute */
+
+  .attribute{
+    font-weight: bold;
+  }
+
+  /* Contact bar */
+  .contact-square{
+    padding: 3ex;
+    border: 0.1px solid grey;
+    border-radius: 10px;
+    margin-top: 30px;
+    background-color: white;
+    box-shadow:1px 1px 10px grey; 
+    
+    position: fixed;
+  }
+
+  /* --------------------------------------------------------- Left Sidebar------------------------ */
+
+  .menu-square{
+    padding: 3ex;
+    border: 0.1px solid grey;
+    border-radius: 10px;
+    margin: 10px;
+    margin-top: 30px;
+    background-color: white;
+    box-shadow:1px 1px 10px grey; 
+    align-items: center;
+  }
+
+  .profile-nav-color{
+    color: black;
+  }
+
+  ul.nav-pills {
+    position: fixed;
+  }
+
+  .center-align{
+    padding-left: 3ex
+  }
+  hr.hr-normal{
+  margin: 0%;
+  float: center;
+  width: 100%;
+  }
+  
+  hr.hr-main{
+    border-top: 1px solid #F83862;
+    float: center;
+  }
+
+ /* ----------------------------------------- PHOTO CAROUSEL  --------------------------------*/
+ 
+.mySlides {display: none}
+
+.img-slides {
+  max-height: 60%;
+  width: 100%;
+  object-fit: contain;
+}
+
+/* Photo Carousel Heading margin */
+.h4-photos-margin{
+  padding: 20px 10px 10px 40px;
+}
+
+/* Slideshow container */
+.slideshow-container {
+  position: relative;
+
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin-top: 2ex;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active-carousel, .dot:hover {
+  background-color: #ffa600;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .prev, .next,.text {font-size: 11px}
+}
+

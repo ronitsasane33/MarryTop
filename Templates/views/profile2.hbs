@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet"  href="/StyleSheets/profile.css" type="text/css" >
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    
+</head>
+<body>
+
+{{>header}}      
+
+<div class="back-color">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-3 vertical-menu " id="myScrollspy">
+        <ul class="fixing" style="list-style-type:none;">
+          <li class="nav-item center-align">
+            <img class="img-thumbnail"  width="170ex" src="http://localhost:3000/user/{{userVisit._id}}/avatar" alt="no image" /> 
+            <h4> {{userVisit.first_name}} {{userVisit.last_name}}</h4>  
+            <h6>Education: MS (CE) </h6>
+            <h6>Lives in: California (USA)</h6> 
+            <hr class="hr-main">     
+          </li>
+          <li class="nav-item">
+            <a class="nav-link profile-nav-color active" href="#section1">Personal Details</a>
+            <hr class="hr-normal">
+          </li>
+          <li class="nav-item">
+            <a class="nav-link profile-nav-color" href="#section2">Photos</a>
+            <hr class="hr-normal">
+          </li>
+          <li class="nav-item">
+            <a class="nav-link profile-nav-color" href="#section3">Background</a>
+            <hr class="hr-normal">
+          </li>
+          <li class="nav-item">
+            <a class="nav-link profile-nav-color" href="#section4">Family Details</a>
+            <hr class="hr-normal">
+          </li>
+          <li class="nav-item">
+            <a class="nav-link profile-nav-color" href="#section4">Education & Career</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-8">
+        
+        <div id="section1" class="square"> 
+          <h4>Personal Details</h4>
+          <hr class="hr-main">
+            <div class="row">
+              <div class="col-6">
+                <p><span class="attribute">Age:</span> 24</p>
+                <p><span class="attribute">Occupation:</span> Software Developer at Google</p>
+                <p><span class="attribute">Salary:</span> $150,000</p>
+                <p><span class="attribute">Education:</span> MS (CE) </p>
+                <p><span class="attribute">Lives in:</span> California (USA)</p>
+                <p><span class="attribute">Native Place:</span> Satara, Maharashtra</p>
+              </div>
+              <div class="col-6">
+                <p><span class="attribute">Marietal Status:</span> Never Married</p>
+                <p><span class="attribute">Religion/caste:</span> Hindu, Mali</p>
+                <p><span class="attribute">Height:</span> 5.6</p>
+                <p><span class="attribute">Weight:</span> 66 kgs</p>
+                <p><span class="attribute">Language:</span> Marathi</p>
+                <p><span class="attribute">Body Type:</span> Fair Skinned, Average Build</p>
+              </div>
+            </div>
+                        
+        </div>   
+        <div id="section2" class="square-carousel">
+          <h4 class="h4-photos-margin"> Photos</h4> 
+              <div class="slideshow-container">
+              <div class="mySlides">
+                <img class="img-slides" src="/images/img1.jpg" >
+              </div>
+
+              <div class="mySlides">
+                <img class="img-slides" src="/images/dad.jpg" >
+              </div>
+
+              <div class="mySlides">
+                <img class="img-slides" src="/images/img2.jpg" >
+              </div>
+
+              <div class="mySlides">
+                <img class="img-slides" src="/images/img3.jpg" >
+              </div>
+
+              <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+              <a class="next" onclick="plusSlides(1)">&#10095;</a>
+              
+              <div style="text-align:center">
+                <span class="dot" onclick="currentSlide(1)"></span> 
+                <span class="dot" onclick="currentSlide(2)"></span> 
+                <span class="dot" onclick="currentSlide(3)"></span> 
+                <span class="dot" onclick="currentSlide(4)"></span>
+              </div>
+              </div>
+                                
+        </div>     
+        <div id="section3" class="square">         
+          <h4>LifeStyle</h4>
+          <hr class="hr-main">
+            <div class="row">
+              <div class="col-6">
+                <p><span class="attribute"></span>Eggetarian</p>
+                <p><span class="attribute"></span>Drinking Habit: Does NOT drink</p>
+                <p><span class="attribute"></span>Does NOT smoke </p>
+                <p><span class="attribute"></span>Lives in California (USA)</p>
+                <p><span class="attribute"></span>Salary: $150,000</p>
+                <p><span class="attribute"></span>From: Satara, Maharashtra</p>
+              </div>
+              <div class="col-6">
+                <p>Never Married</p>
+                <p>Marathi</p>
+                <p>Computer Engineer</p>
+                <p>Hindu, Mali</p>
+                <p>Height: 5.6</p>
+                <p>Fair Skinned, Average Build</p>
+              </div>
+            </div>
+        </div>
+        <div id="section4" class="square">         
+          <h1>Education & Career</h1>
+          <p>Try to scroll this section and look at the navigation list while scrolling!</p>
+        </div>      
+      </div>
+      <div class="col-1"></div>
+    </div>
+  </div>
+</div>
+<script>
+     var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active-carousel", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active-carousel";
+}
+   </script>
+</body>
+</html>
+
+
+ {{!-- <div class="row red">
+                        <div class="col-md-3 col-sm-0">
+                            <div>
+                                <img class="img-thumbnail"  width="192" src="http://localhost:3000/user/{{userCurrent._id}}/avatar" alt="no image" />
+                            </div>
+                        </div>
+                        <div class="col-md-8 col-sm-12">
+                            <h4> {{this.first_name}} {{this.last_name}}</h4>
+                            <h6>Age: 24</h6>
+                            <h6>Occupation: Computer Engineer</h6>
+                            <h6>Education: MS (CE) </h6>
+                            
+                            <h6>Lives in: California (USA)</h6>
+                            <h6>Salary: $150,000</h6>
+                            <h6>From: Satara, Maharashtra</h6>
+                        </div>
+                    </div> --}}

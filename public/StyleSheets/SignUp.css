@@ -1,0 +1,122 @@
+@charset "UTF-8";
+  
+
+*{
+    box-sizing: border-box;
+  }
+  
+  body {
+    background-color: rgb(255, 255, 255);
+    background-image: url("/images/hand_hold.jpg");
+    /* background-position-y: 80%;
+    background-position-x: 100%; */
+    background-repeat: no-repeat;
+    background-size: auto;
+  }
+  
+  #regForm {
+    background-color: #ffffff85;
+    margin: 20px 20px 20px 65%;
+    font-family: Raleway;
+    padding: 40px;
+    width: 30%;
+    min-width: 200px;
+    box-shadow:3px 3px 30px rgb(0, 0, 0); 
+    /* border: 3px solid #F83862;
+    border-radius: 20px; */
+  }
+  
+  h1 {
+    text-align: center;  
+  }
+
+  h3 {
+    text-align: center;  
+    color: #F83862;
+  }
+
+  .hr-main{
+    border-top: 1px solid #F83862;
+    float: center;
+  }
+  
+  input {
+    padding: 10px;
+    width: 100%;
+    font-size: 17px;
+    font-family: Raleway;
+    border: 1px solid #aaaaaa;
+  }
+  
+  /* Mark input boxes that gets an error on validation: */
+  input.invalid {
+    background-color: #ffdddd;
+  }
+  
+  /* Hide all steps by default: */
+  .tab {
+    display: none;
+  }
+  
+  button {
+    background-color: rgba(247, 22, 71, 0.856);
+    color: #ffffff;
+    border: none;
+    padding: 10px 50px;
+    font-size: 17px;
+    font-family: Raleway;
+    cursor: pointer;
+    border-radius: 10px;
+    font-weight: 700; 
+  }
+
+  .margin-submit{
+    margin-left: 5ex; 
+  }
+  
+  button:hover {
+    opacity: 0.8;
+  }
+  
+  #prevBtn {
+    background-color: #4CAF50;
+  }
+  
+  /* Make circles that indicate the steps of the form: */
+  .step {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #4CAF50;
+    border: none;  
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
+  }
+  
+  .step.active {
+    opacity: 1;
+  }
+  
+  /* Mark the steps that are finished and valid: */
+  .step.finish {
+    background-color: rgba(247, 22, 71, 0.856);
+  }
+
+  .form-fields{
+      border-radius: 7px;
+  }
+  
+  /* Login Form */
+  .login-form{
+      padding: 30px;
+      background: rgba(14, 13, 13, 0.5);
+      opacity: 50%;
+      color: #ffffff;
+      
+    box-shadow:3px 3px 30px rgb(133, 133, 133);
+  }
+
+  .float-right{
+      float: right;
+  }

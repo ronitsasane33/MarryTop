@@ -1,0 +1,97 @@
+@charset "UTF-8";
+.bg{
+  background-color: rgba(255, 255, 255, 0.856);
+  padding: 25px 40px; 
+}
+
+.btn-outline-danger{
+  color: rgba(247, 22, 71, 0.856);
+  background-color: rgba(247, 22, 71, 0.856);
+} 
+
+.menu-links{
+  color: rgba(247, 22, 71, 0.856);
+  font-weight: 700;  
+}
+
+.search-bar{
+  background-color: rgba(247, 22, 71, 0.856);
+  border-color: rgba(247, 22, 71, 0.856);
+}
+
+p{
+  line-height: 20px;
+  font-size: 15px;
+  font-weight: normal
+}
+
+
+.a{
+  color: black
+}
+.navbar-brand{
+  color: rgb(255, 255, 255);
+}
+
+.menu-pic{
+  width: 45px;
+  height: 45px;
+  border-radius: 10px;
+}
+
+/* img {
+  max-width: 100%; /* This rule is very important, please do not ignore this! */
+/* } */ 
+
+/* Sticky footer styles
+-------------------------------------------------- 
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height 
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here 
+  height: 60px;
+  background-color: #f5f5f5;
+}
+
+.container .text-muted {
+  margin: 20px 0;
+}
+
+/* Thumbnail styles 
+.thumbnail img {
+    width: 100%;
+}
+
+.thumbnail {
+    padding: 0;
+}
+
+.thumbnail .caption-full {
+    padding: 9px;
+}
+
+/* Google Map styles 
+#map {
+	height: 400px;
+	width: 100%;
+}
+
+/* Campground show page delete button 
+.delete-form {
+	display: inline-block;
+}
+
+/* Flexbox grid fix 
+.flex-wrap {
+  display:flex;
+  flex-wrap: wrap;
+} */

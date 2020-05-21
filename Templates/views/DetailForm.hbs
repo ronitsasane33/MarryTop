@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+<link  href="/StyleSheets/detailForm.css" rel="stylesheet" type="text/css" >
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<body>
+
+{{>header}}
+<div class="container-fluid">
+  <form id="regForm" action="/user/{{userCurrent._id}}?_method=PATCH"  method="POST">
+      <h3> More Information</h3>
+      {{!-- <h1>Sign Up</h1> --}}
+      <hr class="hr-main">
+          <!-- One "tab" for each step in the form: -->
+          <div class="tab form-group">
+            <p><input class="form-fields" placeholder="Country" oninput="this.className = ''" name="country"></p>
+            <p><input class="form-fields" placeholder="State" oninput="this.className = ''" name="state"></p>
+            <p><input class="form-fields" placeholder="City" oninput="this.className = ''" name="city"></p>
+            <p><input class="form-fields" placeholder="Citizenship" oninput="this.className = ''" name="citizenship"></p>
+              <p>
+                <input class="form-fields" placeholder="Residential Status" list="resident" oninput="this.className = ''" name="residential_status">
+                <datalist id="resident">
+                  <option value="Citizen">
+                  <option value="Permanent Resident">
+                  <option value="Green Card holder">
+                  <option value="Visa">
+                </datalist>
+            </p>
+
+          </div>
+          
+          
+          <div class="tab form-group"><label>Birthday:</label>
+            <p><input class="form-fields" placeholder="Family Type" oninput="this.className = ''" name="family_type"></p>
+            <p><input class="form-fields" placeholder="Father Status" oninput="this.className = ''" name="fathers_status"></p>
+            <p><input class="form-fields" placeholder="Relative Status" oninput="this.className = ''" name="relatives_status"></p>
+            <p><input class="form-fields" placeholder="Number of brothers" oninput="this.className = ''" name="brothers"></p>
+            <p><input class="form-fields" placeholder="Number of Sisters" oninput="this.className = ''" name="sisters"></p>
+            <p><input class="form-fields" placeholder="Mother Status" oninput="this.className = ''" name="mothers_status"></p> 
+            <p><input class="form-fields" placeholder="Native Place" oninput="this.className = ''" name="native_place"></p> 
+
+          
+          </div>
+            <div class="tab form-group"><label>Birthday:</label>
+            <p><input class="form-fields" placeholder="Occupation" oninput="this.className = ''" name="occupation"></p>
+            <p><input class="form-fields" placeholder="Salary" oninput="this.className = ''" name="salary"></p>
+            <p><input class="form-fields" placeholder="Company" oninput="this.className = ''" name="company"></p>
+            <p><input class="form-fields" placeholder="Education" oninput="this.className = ''" name="education"></p>
+            <p><input class="form-fields" placeholder="Education Details" oninput="this.className = ''" name="education_details"></p>
+          
+          </div>
+
+          </div>
+            <div class="tab form-group"><label>Birthday:</label>
+            <p><input class="form-fields" placeholder="Height" oninput="this.className = ''" name="height"></p>
+            <p><input class="form-fields" placeholder="Weight" oninput="this.className = ''" name="weight"></p>
+            <p><input class="form-fields" placeholder="Language" oninput="this.className = ''" name="language"></p>
+            <p><input class="form-fields" placeholder="Body Type" oninput="this.className = ''" name="body_type"></p>
+            <p><input class="form-fields" placeholder="Complexion" oninput="this.className = ''" name="complexion"></p>
+          </div>
+
+          </div>
+            <div class="tab form-group"><label>Birthday:</label>
+            <p><input class="form-fields" placeholder="Caste" oninput="this.className = ''" name="caste"></p>
+            <p><input class="form-fields" placeholder="Gothram" oninput="this.className = ''" name="gothram"></p>
+            <p><input class="form-fields" placeholder="Rashi" oninput="this.className = ''" name="rashi"></p>
+            <p><input class="form-fields" placeholder="Mother Tounge" oninput="this.className = ''" name="mother_tounge"></p>
+          </div>
+
+          </div>
+            <div class="tab form-group"><label>Birthday:</label>
+            <p><input class="form-fields" placeholder="Eating Habit" oninput="this.className = ''" name="eating_habit"></p>
+            <p><input class="form-fields" placeholder="Drinking Habit" oninput="this.className = ''" name="drinking_habit"></p>
+            <p><input class="form-fields" placeholder="Smoking Habit" oninput="this.className = ''" name="smoking_habit"></p>
+          </div>
+
+
+        <div style="float:right;">
+          <button class="nextBtn" type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+          <button class="nextBtn" type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+        </div>
+      </div>
+      <!-- Circles which indicates the steps of the form: -->
+      <div style="text-align:center;margin-top:40px;">
+        <span class="step"></span>
+        <span class="step"></span>
+        <span class="step"></span>
+        <span class="step"></span>
+        <span class="step"></span>
+        <span class="step"></span>
+        <span class="step"></span>
+      </div>
+  </form>
+</div>
+</div>
+
+<script src="/js/detailForm.js"></script>
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {{!-- <link rel="stylesheet"  href="/StyleSheets/profile.css" type="text/css" > --}}
+  <link rel="stylesheet"  href="/StyleSheets/myProfile.css" type="text/css" >
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="/js/constants.js"></script>
+  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  
+    
+</head>
+<body data-spy="scroll" data-target="#myScrollspy" data-offset="1">
+
+{{>header}}      
+
+<div class="back-color">
+  <div class="container-fluid">
+    <div class="row">
+      <nav class="col-2 " id="myScrollspy">
+        <ul class="nav nav-pills flex-column menu-square">
+          <li class="nav-item center-align">
+            <img class="img-thumbnail img-responsive"  width="170ex" src="http://localhost:3000/user/{{userCurrent._id}}/avatar" alt="no image" /> 
+            <h4> {{userCurrent.first_name}} {{userCurrent.last_name}}</h4>  
+            <hr class="hr-main">     
+          </li>
+          <li class="nav-item">
+            <a class="nav-link profile-nav-color active" href="#section1">Personal Details</a>
+            <hr class="hr-normal">
+          </li>
+          <li class="nav-item">
+            <a class="nav-link profile-nav-color" href="#section2">Photos</a>
+            <hr class="hr-normal">
+          </li>
+          <li class="nav-item">
+            <a class="nav-link profile-nav-color" href="#section3">Professional Info</a>
+            <hr class="hr-normal">
+          </li>
+          <li class="nav-item">
+            <a class="nav-link profile-nav-color" href="#section4">Religion & LifeStyle</a>
+            <hr class="hr-normal">
+          </li>
+          <li class="nav-item">
+            <a class="nav-link profile-nav-color" href="#section5">Family Details</a>
+            <hr class="hr-normal">
+          </li>
+           <li class="nav-item">
+            <a class="nav-link profile-nav-color" href="#section6">Locaiton</a>
+            <hr class="hr-normal">
+          </li>
+        </ul>
+      </nav>
+
+      <div class="col-7">     
+        <div id="section1" class="square">  
+          <span id='editPersonalDetails' ><i class='editBtn fas fa-edit'></i></span>
+          <h4>Personal Details</h4>
+          <hr class="hr-main">
+          <form action="/user/{{userCurrent._id}}?_method=PATCH" id="form1" method="POST">
+            <div class="row">     
+              <div class="col-6">
+                
+                <p><span class="attribute">Age: <input class="inputSegment1"  value="{{userCurrent.marital_status}}" oninput="this.className = ''" name="marital_status" disabled></span></p>
+                <p><span class="attribute">Occupation: <input class="inputSegment1"  value="{{userCurrent.occupation}}" oninput="this.className = ''" name="occupation" disabled></span> </p>
+                <p><span class="attribute">Works at: <input class="inputSegment1"  value="{{userCurrent.company}}" oninput="this.className = ''" name="company"  disabled></span> </p>
+                <p><span class="attribute">Salary: <input class="inputSegment1"  value="{{userCurrent.salary}}" oninput="this.className = ''" name="salary" disabled></span> </p>
+                <p><span class="attribute">Education: <input class="inputSegment1"  value="{{userCurrent.education}}" oninput="this.className = ''" name="education"  disabled></span> </p>
+                <p><span class="attribute">Lives in: <input class="inputSegment1"  value="{{userCurrent.city}}" oninput="this.className = ''" name="city" disabled></span> </p>
+                
+              </div>
+              <div class="col-6">
+                {{!-- <p><span class="attribute">Marietal Status: <input class="inputSegment"  value="{{userCurrent.marital_status}}" oninput="this.className = ''" name="marital_status" disabled></span>  </p> --}}
+                <p><span class="attribute">Religion: <input class="inputSegment1"  value="{{userCurrent.religion}}" oninput="this.className = ''" name="religion" disabled></span> </p>
+                <p><span class="attribute">Caste: <input class="inputSegment1"  value="{{userCurrent.caste}}" oninput="this.className = ''" name="caste" disabled></span> </p>
+                <p><span class="attribute">Height: <input class="inputSegment1"  value="{{userCurrent.height}}" oninput="this.className = ''" name="height" disabled></span> </p>
+                <p><span class="attribute">Weight: <input class="inputSegment1"  value="{{userCurrent.weight}}" oninput="this.className = ''" name="weight" disabled></span> </p>
+                <p><span class="attribute">Language: <input class="inputSegment1"  value="{{userCurrent.language}}" oninput="this.className = ''" name="language" disabled></span> </p>
+                <p><span class="attribute">Body Type: <input class="inputSegment1"  value="{{userCurrent.body_type}}" oninput="this.className = ''" name="body_type" disabled></span></p>
+              </div>
+              
+            </div>
+            <div style="overflow:auto;">
+              <div style="float:right;">
+                <button id ="btn1" class="toggleInvisisble" type="submit" form="form1">Save</button>
+                
+              </div>
+            </div>
+          </form>
+                        
+        </div>   
+        <div id="section2" class="square-carousel">
+          <h4 class="h4-photos-margin"> Photos</h4> 
+              <div class="slideshow-container">
+                <div class="mySlides">
+                  <img class="img-slides" src="/images/img1.jpg" >
+                </div>
+
+                <div class="mySlides">
+                  <img class="img-slides" src="/images/dad.jpg" >
+                </div>
+
+                <div class="mySlides">
+                  <img class="img-slides" src="/images/img2.jpg" >
+                </div>
+
+                <div class="mySlides">
+                  <img class="img-slides" src="/images/img3.jpg" >
+                </div>
+
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                
+                <div style="text-align:center">
+                  <span class="dot" onclick="currentSlide(1)"></span> 
+                  <span class="dot" onclick="currentSlide(2)"></span> 
+                  <span class="dot" onclick="currentSlide(3)"></span> 
+                  <span class="dot" onclick="currentSlide(4)"></span>
+                </div>
+              </div>
+                                
+        </div>    
+{{!-- //======================================= SECTION 3 ===========================================--}}
+
+        <div id="section3" class="square"> 
+          <span id='editProfessional'><i class='editBtn fas fa-edit'></i></span>
+          <h4>Professional Info</h4>
+          <hr class="hr-main">
+          <form action="/user/{{userCurrent._id}}?_method=PATCH" id="form3" method="POST">        
+            <div class="row">
+              <div class="col-6">
+                <p><span class="attribute">Occupation: <input class="inputSegment3"  value="{{userCurrent.occupation}}" oninput="this.className = ''" name="occupation" disabled> </span></p>
+                <p><span class="attribute">Works at: <input class="inputSegment3"  value="{{userCurrent.company}}" oninput="this.className = ''" name="company" disabled></span></p>
+              </div>
+              <div class="col-6">
+                <p><span class="attribute">Education: <input class="inputSegment3"  value="{{userCurrent.education}}" oninput="this.className = ''" name="education" disabled></span></p>
+                <p><span class="attribute">Education Details: <input class="inputSegment3"  value="{{userCurrent.education_details}}" oninput="this.className = ''" name="education_details" disabled></span></p>
+              </div>
+            </div>
+            <div style="overflow:auto;">
+              <div style="float:right;">
+                <button id ="btn3" class="toggleInvisisble" type="submit" form="form3">Save</button>
+              </div>
+            </div>
+          </form>
+        </div> 
+{{!-- //======================================= SECTION 4 ===========================================--}}
+        <div id="section4" class="square">
+          <span id='editReligionLife'><i class='editBtn fas fa-edit'></i></span>
+          <h4>Religion & LifeStyle</h4>
+          <hr class="hr-main">
+          <form action="/user/{{userCurrent._id}}?_method=PATCH" id="form4" method="POST">         
+            <div class="row">
+              <div class="col-6">
+                <p><span class="attribute">Religion: <input class="inputSegment4"  value="{{userCurrent.religion}}" oninput="this.className = ''" name="religion" disabled></span></p>
+                <p><span class="attribute">Caste/Subcaste: <input class="inputSegment4"  value="{{userCurrent.caste}}" oninput="this.className = ''" name="caste" disabled></span> </p>
+                <p><span class="attribute">Gothram: <input class="inputSegment4"  value="{{userCurrent.gothram}}" oninput="this.className = ''" name="gothram" disabled></span>  </p>
+                <p><span class="attribute">Rashi: <input class="inputSegment4"  value="{{userCurrent.rashi}}" oninput="this.className = ''" name="rashi" disabled></span></p>
+              </div>
+              <div class="col-6">
+                <p><span class="attribute">Eating Habit: <input class="inputSegment4"  value="{{userCurrent.eating_habit}}" oninput="this.className = ''" name="eating_habit" disabled></span></p>
+                <p><span class="attribute">Drinking Habit: <input class="inputSegment4"  value="{{userCurrent.drinking_habit}}" oninput="this.className = ''" name="drinking_habit" disabled></span> </p>
+                <p><span class="attribute">Smoking Habit: <input class="inputSegment4"  value="{{userCurrent.smoking_habit}}" oninput="this.className = ''" name="smoking_habit" disabled></span></p>
+              </div>
+            </div>
+            <div style="overflow:auto;">
+              <div style="float:right;">
+                <button id ="btn4" class="toggleInvisisble" type="submit" form="form4">Save</button>
+              </div>
+            </div>
+          </form>
+        </div>
+
+{{!-- //======================================= SECTION 5 ===========================================--}}
+
+        <div id="section5" class="square">    
+          <span id='editFamily'><i class='editBtn fas fa-edit'></i></span>
+          <h4>Family Details</h4>
+          <hr class="hr-main">
+          <form action="/user/{{userCurrent._id}}?_method=PATCH" id="form5" method="POST">
+            <div class="row">
+              <div class="col-6">
+                <p><span class="attribute">Family type: <input class="inputSegment5"  value="{{userCurrent.family_type}}" oninput="this.className = ''" name="family_type" disabled></span></p>
+                <p><span class="attribute">Fathers status: <input class="inputSegment5"  value="{{userCurrent.fathers_status}}" oninput="this.className = ''" name="fathers_status" disabled></span></p>
+                <p><span class="attribute">Mother status: <input class="inputSegment5"  value="{{userCurrent.mothers_status}}" oninput="this.className = ''" name="mothers_status" disabled></span> </p>
+              </div>
+              <div class="col-6">
+                {{!-- add dynamic option here --}}
+                <p><span class="attribute">Extra member status: <input class="inputSegment5"  value="{{userCurrent.relatives_status}}" oninput="this.className = ''" name="relatives_status" disabled></span> </p>
+                <p><span class="attribute">no of brother: <input class="inputSegment5"  value="{{userCurrent.brothers}}" oninput="this.className = ''" name="brothers" disabled></span></p>
+                <p><span class="attribute">no of sister: <input class="inputSegment5"  value="{{userCurrent.sisters}}" oninput="this.className = ''" name="sisters" disabled></span></p>
+              </div>
+            </div>
+            <div style="overflow:auto;">
+              <div style="float:right;">
+                <button id ="btn5" class="toggleInvisisble" type="submit" form="form5">Save</button>
+              </div>
+            </div>
+          </form>
+        </div> 
+
+{{!-- //======================================= SECTION 6 ===========================================--}}
+
+        <div id="section6" class="square">  
+          <span id='editLocation'><i class='editBtn fas fa-edit'></i></span>
+          <h4>Location</h4>
+          <hr class="hr-main">
+          <form action="/user/{{userCurrent._id}}?_method=PATCH" id="form6" method="POST">       
+            <div class="row">
+              <div class="col-6">
+                <p><span class="attribute">Citizenship: <input class="inputSegment6"  value="{{userCurrent.citizenship}}" oninput="this.className = ''" name="citizenship" disabled></span></p>
+                <p><span class="attribute">State: <input class="inputSegment6"  value="{{userCurrent.state}}" oninput="this.className = ''" name="state" disabled></span></p>
+                <p><span class="attribute">Residing City: <input class="inputSegment6"  value="{{userCurrent.city}}" oninput="this.className = ''" name="city" disabled></span></p>
+              </div>
+              <div class="col-6">
+                {{!-- add dynamic option here --}}
+                <p><span class="attribute">Residing Country: <input class="inputSegment6"  value="{{userCurrent.country}}" oninput="this.className = ''" name="country" disabled></span> </p>
+                <p><span class="attribute">Residential Status: <input class="inputSegment6"  value="{{userCurrent.residential_status}}" oninput="this.className = ''" name="residential_status" disabled></span></p>
+              </div>
+            </div>
+            <div style="overflow:auto;">
+              <div style="float:right;">
+                <button id ="btn6" class="toggleInvisisble" type="submit" form="form6">Save</button>
+              </div>
+            </div>
+          </form>
+        </div>     
+      </div>
+      <div class="col-3">
+              
+                <div class="row">
+                      <div class="col">
+                        <div class="contact-square">
+                        
+                          <h4>Contact Info</h4>
+                          <hr class="hr-main">
+                              <p><span class="attribute">Contact number: </span>+1 9732542537</p>
+                              <p><span class="attribute">Email: </span>sasaneshubham79@gmail.com</p>
+                              <p><span class="attribute">parents number: </span>9867111872</p>
+                           
+                        </div>
+                      </div>
+                </div>   
+      </div>
+    </div>
+  </div>
+</div>
+<script src="/js/myProfile.js"></script>
+<script src="/js/myProfileEdit.js"></script>
+</body>
+</html>

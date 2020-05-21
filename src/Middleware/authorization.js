@@ -3,8 +3,8 @@ const user = require("../Models/user")
 
 const auth = async (req,res,next) => {
         try{
-            const token = req.header("Authorization").replace("Bearer ","") 
-            const decoded = jwt.verify(token, process.env.JWT_SECRET)
+            const token = req.cookies['auth_token'] 
+            const decoded = jwt.verify(token, "thisismyfirstlogin")
             const userCurrent = await user.findOne({_id : decoded._id, 'tokens.token' : token})
           
             if(!userCurrent){
